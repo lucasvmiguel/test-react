@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-
-
-const Form = ({ onSubmit, onChange, username, password, response }) => {
+const Login = ({ onSubmit, onChange, login }) => {
   const changeUsername = (event) => {
-    onChange(event.target.value, password);
+    onChange(event.target.value, login.password);
   }
 
   const changePassword = (event) => {
-    onChange(username, event.target.value);
+    onChange(login.username, event.target.value);
   }
 
   return (
     <form>
       <label>
-        { response }
+        { login.response }
       </label>
       <label>
         Username:
-        <input type="text" name="username" value={username} onChange={changeUsername}/>
+        <input type="text" name="username" value={login.username} onChange={changeUsername}/>
       </label>
       <label>
         Password:
-        <input type="password" name="password" value={password} onChange={changePassword} />
+        <input type="password" name="password" value={login.password} onChange={changePassword} />
       </label>
       <input type="button" onClick={onSubmit} value="submit"/>
     </form>
   )}
 
-Form.propTypes = {
+Login.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  response: PropTypes.number.isRequired
+  login: PropTypes.object.isRequired
 }
 
-export default Form;
+export default Login;

@@ -1,16 +1,12 @@
-import request from 'request';
+// import request from 'request';
 
-const Submit = (store) => () => {
-  request('https://httpbin.org/get', function (error, response, body) {
-    store.dispatch({ type: 'LOGIN_SUBMIT', response: response.statusCode })
-  });
+export const Submit = () => {
+  // request('https://httpbin.org/get', function (error, response, body) {
+  //   store.dispatch({ type: 'LOGIN_SUBMIT', response: response.statusCode })
+  // });
+  return { type: 'LOGIN_SUBMIT' };
 }
 
-const Change = (store) => (username, password) => {
-  store.dispatch({ type: 'LOGIN_CHANGE', username: username, password: password });
-}
-
-export {
-  Submit,
-  Change
+export const Change = (username, password) => {
+  return { type: 'LOGIN_CHANGE', username: username, password: password };
 }

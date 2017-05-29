@@ -1,6 +1,7 @@
 function login(state = {username: "", password: "", response: 0}, action) {
   switch (action.type) {
   case 'LOGIN_SUBMIT':
+    alert('bla');
     state.response = action.response;
     return state;
   case 'LOGIN_CHANGE':
