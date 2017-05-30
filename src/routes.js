@@ -8,7 +8,7 @@ import Home from './containers/Home';
 import About from './containers/About';
 import NotFound from './containers/NotFound';
 
-const Routes = ({ state, store, history }) => (
+const Routes = ({ store, history }) => (
     <Provider store={store} >
       <Router history={history} >
         <div>
@@ -25,8 +25,7 @@ const Routes = ({ state, store, history }) => (
 
 Routes.propTypes = {
   history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired,
-  state: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 };
 
 export default Routes;

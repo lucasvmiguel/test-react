@@ -7,6 +7,7 @@ import { Submit, SubmitSuccess, SubmitFailure, Change } from '../actions/login.j
 
 const AboutContainer = ({ login, change, submit}) => (
   <div>
+    <h1>About</h1>
     <Login login={login} onChange={change} onSubmit={submit} />
   </div>
 )

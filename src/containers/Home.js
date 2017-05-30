@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Counter from '../components/Counter.js';
+import Menu from '../components/Menu.js';
 import { Increment, Decrement } from '../actions/counter.js';
 
 const HomeContainer = ({ counter, increment, decrement }) => (
   <div>
-    <Link to="/about">go to about</Link>
+    <Menu />
+    <h1>Home</h1>
     <Counter count={counter} onIncrement={increment} onDecrement={decrement} />
   </div>
 );
