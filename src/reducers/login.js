@@ -1,8 +1,15 @@
-function login(state = {username: "", password: "", response: 0}, action) {
+function login(state = {username: "", password: "", isLoading: false, status: 0}, action) {
   switch (action.type) {
   case 'LOGIN_SUBMIT':
-    alert('bla');
-    state.response = action.response;
+    state.isLoading = true;
+    return state;
+  case 'LOGIN_SUBMIT_SUCCESS':
+    state.status = action.status;
+    state.isLoading = false;
+    return state;
+  case 'LOGIN_SUBMIT_FAILURE':
+    state.status = action.status;
+    state.isLoading = false;
     return state;
   case 'LOGIN_CHANGE':
     state.username = action.username;

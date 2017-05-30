@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
-import { createStore, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createBrowserHistory from 'history/createBrowserHistory'
-import Routes from './routes';
 
-// reducers
+import registerServiceWorker from './registerServiceWorker';
+import Routes from './routes';
 import counter from './reducers/counter.js';
 import login from './reducers/login.js';
 
-let store = createStore(combineReducers({ counter, login }));
+let store = createStore(combineReducers({ counter, login }), applyMiddleware(thunk));
 
 // debug
 store.subscribe(() => console.log(store.getState()));

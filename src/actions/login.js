@@ -1,10 +1,13 @@
-// import request from 'request';
-
 export const Submit = () => {
-  // request('https://httpbin.org/get', function (error, response, body) {
-  //   store.dispatch({ type: 'LOGIN_SUBMIT', response: response.statusCode })
-  // });
   return { type: 'LOGIN_SUBMIT' };
+}
+
+export const SubmitSuccess = (status) => {
+  return { type: 'LOGIN_SUBMIT_SUCCESS', status: status };
+}
+
+export const SubmitFailure = (status) => {
+  return { type: 'LOGIN_SUBMIT_FAILURE', status: status };
 }
 
 export const Change = (username, password) => {

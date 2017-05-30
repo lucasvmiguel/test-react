@@ -10,10 +10,20 @@ const Login = ({ onSubmit, onChange, login }) => {
     onChange(login.username, event.target.value);
   }
 
+  let isLoading = null;
+  if (login.isLoading) {
+    isLoading = <label>Está carregando</label>
+  } else {
+    isLoading = <label>Não está carregando</label>
+  }
+
   return (
     <form>
       <label>
-        { login.response }
+        { login.status }
+      </label>
+      <label>
+        { isLoading }
       </label>
       <label>
         Username:

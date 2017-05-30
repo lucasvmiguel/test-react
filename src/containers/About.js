@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import request from 'request';
 
 import Login from '../components/Login.js';
-import { Submit, Change } from '../actions/login.js';
+import { Submit, SubmitSuccess, SubmitFailure, Change } from '../actions/login.js';
 
 const AboutContainer = ({ login, change, submit}) => (
   <div>
@@ -10,13 +11,25 @@ const AboutContainer = ({ login, change, submit}) => (
   </div>
 )
 
+const submitForm = () => (dispatch, getState) => {
+  dispatch(Submit());
+
+  request('https://httpbin.org/get', function (error, response, body) {
+    if (error === null) {
+      dispatch(SubmitSuccess(response.statusCode));
+    } else {
+      dispatch(SubmitFailure(response.statusCode));
+    }
+  });
+};
+
 const mapStateToProps = (state, ownProps) => {
   return {login: state.login}
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submit: () => dispatch(Submit()),
+    submit: () => dispatch(submitForm()),
     change: (username, password) => dispatch(Change(username, password))
   }
 };
