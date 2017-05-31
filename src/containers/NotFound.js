@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const NotFoundContainer = ({ login, change, submit}) => (
+const NotFoundContainer = () => (
   <div>
     <h1>Not Found</h1>
   </div>
