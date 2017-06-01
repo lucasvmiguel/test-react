@@ -36,11 +36,11 @@ class FormUser extends React.Component {
         {idField}
         <label>
           Name:
-          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+          <input type="text" name="name" value={this.state.user.name} onChange={this.handleChange} />
         </label>
         <label>
           Password:
-          <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+          <input type="text" name="password" value={this.state.user.password} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import User from './User.js';
 
 
 const ListUser = (props) => {
-  const listUsers = props.users.map((user) =>
-    <User key={user.id} user={user} />
-  );
+  let listUsers = null;
+
+  if (!!props.editable) {
+    listUsers = props.users.map((user) => (<div><User key={user.id} user={user} /><Link to={'/users/' + user.id}>edit</Link></div>));
+  } else {
+    listUsers = props.users.map((user) => (<div><User key={user.id} user={user} /></div>));
+  }
 
   return (
     <div>

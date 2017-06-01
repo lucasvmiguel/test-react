@@ -8,7 +8,8 @@ import HomeContainer from './containers/HomeContainer';
 import AboutContainer from './containers/AboutContainer';
 import NotFoundContainer from './containers/NotFoundContainer';
 import ListUserContainer from './containers/ListUserContainer';
-import FormUserContainer from './containers/FormUserContainer';
+import NewUserContainer from './containers/NewUserContainer';
+import EditUserContainer from './containers/EditUserContainer';
 
 const Routes = ({ store, history }) => (
   <Provider store={store} >
@@ -25,8 +26,8 @@ const Routes = ({ store, history }) => (
           <Redirect from="/home" to="/"/>
           <Route path="/about" component={AboutContainer} />
           <Route exact path="/users" component={ListUserContainer} />
-          <Route path="/users/new" component={FormUserContainer} />
-          <Route path="/users/:id" component={FormUserContainer} />
+          <Route path="/users/new" component={NewUserContainer} />
+          <Route path="/users/:id" component={EditUserContainer} />
           <Route component={NotFoundContainer}/>
         </Switch>
       </div>

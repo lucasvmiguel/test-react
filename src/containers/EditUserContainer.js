@@ -33,16 +33,12 @@ const fetchUser = (dispatch, id) => () => {
 
 
 class FormUserContainer extends React.Component {
-  componentWillMount() {
-    if (!!this.props.match.params && !!this.props.match.params.id) {
-      fetchUser(this.props.dispatch, this.props.match.params.id)();
-    } else {
-      this.props.dispatch(RefreshUserState());
-    }
+  constructor(props) {
+    super(props);
+    fetchUser(this.props.dispatch, this.props.match.params.id)();
   }
 
   render() {
-    console.log('foo',this.props.user.userForm);
     return (
       <div>
         <FormUser user={this.props.user.userForm} onChange={this.props.change} onSubmit={this.props.submit}/>
@@ -50,7 +46,6 @@ class FormUserContainer extends React.Component {
     )
   }
 }
-
 
 const mapStateToProps = (state, ownProps) => {
   return {user: state.user}

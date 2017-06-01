@@ -35,7 +35,7 @@ class ListUserContainer extends React.Component {
       <div>
         {loading}
         <button onClick={this.props.refresh()}>Atualizar</button>
-        {!this.props.isLoading ? <ListUser users={this.props.users}/> : null}
+        {!this.props.isLoading ? <ListUser users={this.props.users} editable={true}/> : null}
       </div>
     )
   }

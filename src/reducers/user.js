@@ -1,9 +1,7 @@
-const initialState = {users: [], isLoading: false, status: 0, userForm: {id: 0, name: '', password: ''}};
-
-function user(state = initialState, action) {
+function user(state = {users: [], isLoading: false, status: 0, userForm: {id: 0, name: '', password: ''}}, action) {
   switch (action.type) {
   case 'USER_REFRESH_STATE':
-    state = initialState;
+    state = {users: [], isLoading: false, status: 0, userForm: {id: 0, name: '', password: ''}};
     return state;
   case 'USER_LIST_SUBMIT':
     state.isLoading = true;
