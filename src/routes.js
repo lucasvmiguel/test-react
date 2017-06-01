@@ -4,21 +4,23 @@ import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Home from './containers/Home';
-import About from './containers/About';
-import NotFound from './containers/NotFound';
-import User from './containers/User';
+import HomeContainer from './containers/HomeContainer';
+import AboutContainer from './containers/AboutContainer';
+import NotFoundContainer from './containers/NotFoundContainer';
+import ListUserContainer from './containers/ListUserContainer';
+import FormUserContainer from './containers/FormUserContainer';
 
 const Routes = ({ store, history }) => (
     <Provider store={store} >
       <Router history={history} >
         <div>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={HomeContainer} />
             <Redirect from="/home" to="/"/>
-            <Route path="/about" component={About} />
-            <Route path="/users" component={User} />
-            <Route component={NotFound}/>
+            <Route path="/about" component={AboutContainer} />
+            <Route path="/users" component={ListUserContainer} />
+            <Route path="/usersnew" component={FormUserContainer} />
+            <Route component={NotFoundContainer}/>
           </Switch>
         </div>
       </Router>

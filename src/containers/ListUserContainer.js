@@ -2,12 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import request from 'request';
 
-import Menu from '../components/Menu.js';
-import User from '../components/User.js';
+import ListUser from '../components/ListUser.js';
 import { GetUsers, GetUsersSuccess, GetUsersFailure } from '../actions/user.js';
 
 
-const fetchUsers = (dispatch) => {
+const fetchUsers = (dispatch) => () => {
   dispatch(GetUsers());
 
   request('https://jsonplaceholder.typicode.com/users', function (error, response, body) {
@@ -20,41 +19,25 @@ const fetchUsers = (dispatch) => {
 };
 
 
-class UserContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class ListUserContainer extends React.Component {
   componentWillMount() {
-    fetchUsers(this.props.dispatch);
+    fetchUsers(this.props.dispatch)();
   }
 
   render() {
     let loading = null;
-    let error = null;
 
     if (this.props.isLoading) {
-      loading = <label> está carregando...</label>
+      loading = <label>loading...</label>
     }
-
-    if (this.props.status != 200 && this.props.status != 0) {
-      error = <label> erro ao trazer usuários </label>
-    }
-
-    const listUsers = this.props.users.map((user) =>
-      <User key={user.id} user={user} />
-    );
 
     return (
       <div>
-        <Menu />
-        <h1>Users</h1>
-        <button>Atualizar</button>
         {loading}
-        {error}
-        {listUsers}
+        <button onClick={this.props.refresh()}>Atualizar</button>
+        {!this.props.isLoading ? <ListUser users={this.props.users}/> : null}
       </div>
-    );
+    )
   }
 }
 
@@ -69,8 +52,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatch: dispatch
+    dispatch: dispatch,
+    refresh: () => fetchUsers(dispatch)
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ListUserContainer);
