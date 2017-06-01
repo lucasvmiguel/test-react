@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import request from 'request';
 
 import Login from '../components/Login.js';
-import Menu from '../components/Menu.js';
 import { Submit, SubmitSuccess, SubmitFailure, Change } from '../actions/login.js';
 
 const AboutContainer = ({ login, change, submit}) => (
   <div>
-    <Menu />
     <h1>About</h1>
     <Login login={login} onChange={change} onSubmit={submit} />
   </div>

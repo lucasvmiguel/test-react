@@ -1,3 +1,7 @@
+export const RefreshUserState = () => {
+  return { type: 'USER_REFRESH_STATE' };
+}
+
 export const GetUsers = () => {
   return { type: 'USER_LIST_SUBMIT' };
 }
@@ -10,14 +14,30 @@ export const GetUsersFailure = (status) => {
   return { type: 'USER_LIST_SUBMIT_FAILURE', status: status };
 }
 
-export const NewUser = () => {
-  return { type: 'USER_NEW_SUBMIT' };
+export const GetUser = () => {
+  return { type: 'USER_GET_SUBMIT' };
 }
 
-export const NewUserSuccess = (status) => {
-  return { type: 'USER_NEW_SUBMIT_SUCCESS', status: status};
+export const GetUserSuccess = (status, user) => {
+  return { type: 'USER_GET_SUBMIT_SUCCESS', status: status, user: user };
 }
 
-export const NewUserFailure = (status) => {
-  return { type: 'USER_NEW_SUBMIT_FAILURE', status: status };
+export const GetUserFailure = (status) => {
+  return { type: 'USER_GET_SUBMIT_FAILURE', status: status };
+}
+
+export const SaveUser = () => {
+  return { type: 'USER_SAVE_SUBMIT' };
+}
+
+export const SaveUserSuccess = (status) => {
+  return { type: 'USER_SAVE_SUBMIT_SUCCESS', status: status};
+}
+
+export const SaveUserFailure = (status) => {
+  return { type: 'USER_SAVE_SUBMIT_FAILURE', status: status };
+}
+
+export const ChangeUser = (user) => {
+  return { type: 'USER_CHANGE', user: user };
 }

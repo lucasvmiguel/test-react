@@ -4,31 +4,43 @@ import PropTypes from 'prop-types';
 class FormUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: '', password: ''};
+    this.state = {user: this.props.user};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.state.user[name] = value;
+    this.setState(this.state);
+    this.props.onChange(this.state.user);
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.user);
     event.preventDefault();
   }
 
   render() {
+    let idField = null;
+
+    if (this.state.user.id !== 0) {
+      idField = (<label> ID: {this.state.user.id} </label>);
+    }
+
     return (
       <form onSubmit={this.handleSubmit}>
+        {idField}
         <label>
           Name:
-          <input type="text" value={this.state.name} onChange={this.handleChange} />
+          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
         </label>
         <label>
           Password:
-          <input type="text" value={this.state.password} onChange={this.handleChange} />
+          <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

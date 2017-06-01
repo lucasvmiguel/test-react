@@ -2,12 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Counter from '../components/Counter.js';
-import Menu from '../components/Menu.js';
 import { Increment, Decrement } from '../actions/counter.js';
 
 const HomeContainer = ({ counter, increment, decrement }) => (
   <div>
-    <Menu />
     <h1>Home</h1>
     <Counter count={counter} onIncrement={increment} onDecrement={decrement} />
   </div>
