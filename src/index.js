@@ -12,6 +12,7 @@ import user from './reducers/user.js';
 
 import './styles/index.css';
 import './styles/menu.css';
+import './styles/grid_list.css';
 
 let store = createStore(combineReducers({ counter, login, user }), applyMiddleware(thunk));
 

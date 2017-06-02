@@ -10,6 +10,7 @@ import NotFoundContainer from './containers/NotFoundContainer';
 import ListUserContainer from './containers/ListUserContainer';
 import NewUserContainer from './containers/NewUserContainer';
 import EditUserContainer from './containers/EditUserContainer';
+import ListContainer from './containers/ListContainer';
 
 const Routes = ({ store, history }) => (
   <Provider store={store} >
@@ -28,6 +29,7 @@ const Routes = ({ store, history }) => (
           <Route exact path="/users" component={ListUserContainer} />
           <Route path="/users/new" component={NewUserContainer} />
           <Route path="/users/:id" component={EditUserContainer} />
+          <Route path="/list" component={ListContainer} />
           <Route component={NotFoundContainer}/>
         </Switch>
       </div>
