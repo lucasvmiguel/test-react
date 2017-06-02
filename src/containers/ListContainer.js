@@ -8,10 +8,10 @@ class ListUserContainer extends React.Component {
   render() {
     const data = [{id:1, name: 'Lucas', date: new Date(), another: 'bar'}, {id:2, name: 'Valdir', date: new Date(), another: 'bar'}];
     const columns = [{name:'id', title: 'ID'}, {name:'name', title: 'NAME'}, {name:'date', title:'DATE'}];
-    
+
     return (
       <div>
-        <GridList data={data} columns={columns} title="teste" editable={true} deletable={false}/>
+        <GridList data={data} columns={columns} title="teste" editable={{active:true, path:'/users'}} deletable={{active:true, path:'/users'}}/>
       </div>
     )
   }

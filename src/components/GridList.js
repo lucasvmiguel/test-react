@@ -23,6 +23,8 @@ const GridList = ({ title, data, columns, editable, deletable }) => (
 
 GridList.propTypes = {
   data: PropTypes.array.isRequired,
+  editable: PropTypes.object,
+  deletable: PropTypes.object,
   columns: PropTypes.array.isRequired
 }
 
